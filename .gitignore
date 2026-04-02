@@ -3,3 +3,5 @@ venv/
 env/
 bin/
 obj/
+distilbert_results/
+.ipynb_checkpoints/
