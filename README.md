@@ -4,8 +4,10 @@
 
 ## Presentation Parts
 1. **Research questions + Motivation**
+
 2. **Data Visualization and Description**
-3. **NLP tools: creating features** - *Everyone* \\
+
+3. **NLP tools: creating features** - *Everyone*  
 **Already created features:**
     - 'duration'
     - 'CCI_index'
@@ -20,8 +22,9 @@
     - country dummies
 
 4. **Prediction models**
-  - **Baseline: Lasso with count of words** - *Eliott*
-  - **ML models on NLP features** - *Louis*
-  - **Creating embeddings** - *Adrien*
-  - **Transfer Learning** - *Filipe*
+    - **Baseline: Lasso with count of words** - *Eliott*
+    - **ML models on NLP features** - *Louis*
+    - **Creating embeddings** - *Adrien*
+    - **Transfer Learning** - *Filipe*
+
 5. **Improving blurbs** - *Rose* 
