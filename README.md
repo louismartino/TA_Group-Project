@@ -5,7 +5,7 @@
 ## Presentation Parts
 1. **Research questions + Motivation**
 2. **Data Visualization and Description**
-3. **NLP tools: creating features** - *Everyone*
+3. **NLP tools: creating features** - *Everyone* \\
 **Already created features:**
     - 'duration'
     - 'CCI_index'
