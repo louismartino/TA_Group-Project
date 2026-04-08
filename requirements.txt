@@ -3,3 +3,12 @@ seaborn
 pandas
 scikit-learn
 sentence-transformers
+vaderSentiment
+textstat
+spacy
+os
+warnings
+numpy
+xgboost
+shap
+seaborn

@@ -1,0 +1,8 @@
+duration
+CCI_index
+blurb_length
+sentiment_score
+readability_score
+name_blurb_similarity
+log_goal
+CCI_per_goal

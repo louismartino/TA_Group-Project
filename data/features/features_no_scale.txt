@@ -1,0 +1,21 @@
+cat_Art
+cat_Comics
+cat_Crafts
+cat_Dance
+cat_Design
+cat_Fashion
+cat_Film & Video
+cat_Food
+cat_Games
+cat_Journalism
+cat_Music
+cat_Photography
+cat_Publishing
+cat_Technology
+cat_Theater
+country_AU
+country_CA
+country_GB
+country_NZ
+country_US
+z-score_log_goal
