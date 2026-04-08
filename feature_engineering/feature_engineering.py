@@ -72,6 +72,9 @@ class FeatureEngineering:
 
 
     def vocab_level(self):
+        """
+        The higher the score is, the easier the blurb is to read
+        """
         self.df["readability_score"] = self.df["blurb"].apply(lambda x: textstat.flesch_reading_ease(str(x)))
         self.features_scale.append("readability_score")
 
