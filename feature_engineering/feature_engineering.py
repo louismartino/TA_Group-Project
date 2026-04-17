@@ -41,12 +41,15 @@ class FeatureEngineering:
         print(f"Target variable '{self.target_column}' transformed into binary 'target' column.")
 
 
-    def dummies(self):
-        self.df = pd.get_dummies(self.df, columns=["category.parent_name"], prefix="cat", drop_first=False, dtype=int)
-        self.features_no_scale.extend([col for col in self.df.columns if col.startswith("cat_")])
 
-        self.df = pd.get_dummies(self.df, columns=["country"], prefix="country", drop_first=False, dtype=int)
-        self.features_no_scale.extend([col for col in self.df.columns if col.startswith("country_")])
+    def dummies(self):
+        cat_dummies = pd.get_dummies(self.df["category.parent_name"], prefix="cat", drop_first=False, dtype=int)
+        self.features_no_scale.extend(cat_dummies.columns.tolist())
+        self.df = pd.concat([self.df, cat_dummies], axis=1)
+
+        country_dummies = pd.get_dummies(self.df["country"], prefix="country", drop_first=False, dtype=int)
+        self.features_no_scale.extend(country_dummies.columns.tolist())
+        self.df = pd.concat([self.df, country_dummies], axis=1)
 
         print("Categorical variables 'category.parent_name' and 'country' transformed into dummy variables.")
 
