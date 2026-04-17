@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ks-green: #05ce78;
+  --ks-green-dark: #028858;
+  --ks-black: #282828;
+  --ks-gray: #696969;
+  --ks-light: #f7f7f7;
+  --ks-white: #ffffff;
+  --ks-red: #e74c3c;
+  --ks-orange: #f39c12;
+}
+
+body {
+  background: var(--ks-light);
+  color: var(--ks-black);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Kickstarter-style progress bar */
+.success-meter {
+  height: 12px;
+  border-radius: 6px;
+  background: #e0e0e0;
+  overflow: hidden;
+}
+.success-meter-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 1s ease-in-out, background 0.5s;
+}
+
+/* Radar chart container */
+.radar-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Leaderboard row animation */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.leaderboard-row {
+  animation: slideIn 0.3s ease-out forwards;
+}

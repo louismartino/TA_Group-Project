@@ -3,3 +3,20 @@ venv/
 env/
 bin/
 obj/
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Node / Next.js
+node_modules/
+.next/
+.env.local
+
+# IDE
+.vscode/
+.idea/

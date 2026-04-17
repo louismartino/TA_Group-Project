@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+pandas
+numpy
+scikit-learn
+torch
+transformers
+safetensors
+vaderSentiment
+textstat
+spacy
+google-generativeai
