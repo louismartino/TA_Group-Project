@@ -1,3 +1,7 @@
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -21,14 +25,15 @@ app.add_middleware(
 )
 
 # ── Load model artifacts on startup ──────────────────────────────────────────
-import os
 DATA_PATH = os.path.join(os.path.dirname(__file__), "data") + "/"
 
 nlp = spacy.load("en_core_web_md")
 sentiment_analyzer = SentimentIntensityAnalyzer()
 
 # Gemini
-GEMINI_API_KEY = "AIzaSyB6lGO76x1_ygn5xUpsK-DEs7hYvMOAOZQ"
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+if not GEMINI_API_KEY:
+    raise RuntimeError("GEMINI_API_KEY is not set. Add it to your environment (see .env.example).")
 genai.configure(api_key=GEMINI_API_KEY)
 gemini_model = genai.GenerativeModel("gemini-2.5-flash")
 

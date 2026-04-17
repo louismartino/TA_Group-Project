@@ -11,3 +11,4 @@ vaderSentiment
 textstat
 spacy
 google-generativeai
+python-dotenv
