@@ -6,6 +6,7 @@ scikit-learn
 torch
 transformers
 safetensors
+huggingface_hub
 vaderSentiment
 textstat
 spacy

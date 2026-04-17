@@ -38,15 +38,11 @@ with open(f"{DATA_PATH}features_scale.txt") as f:
 with open(f"{DATA_PATH}features_no_scale.txt") as f:
     features_no_scale = [line.strip() for line in f.readlines()]
 
-# Load joint BERT model (Filipe's best: ROC-AUC 0.857)
-# Points to the LLM/ folder at repo root (shared with notebook)
-MODEL_CHECKPOINT = os.path.join(
-    os.path.dirname(__file__), "..", "..",
-    "LLM", "joint_distilbert_structured_results", "checkpoint-16524"
-)
-print("Loading joint BERT model... (takes ~15s)")
+# Load joint BERT model from HuggingFace Hub (Filipe's best: ROC-AUC 0.857)
+HF_MODEL_REPO = os.environ.get("HF_MODEL_REPO", "RoseCymbler/kickstarter-joint-bert")
+print(f"Loading joint BERT model from {HF_MODEL_REPO}...")
 bert_scorer = BertScorer(
-    checkpoint_dir=MODEL_CHECKPOINT,
+    hf_repo_id=HF_MODEL_REPO,
     train_csv_path=f"{DATA_PATH}train.csv",
     features_scale=features_scale,
     features_no_scale=features_no_scale,

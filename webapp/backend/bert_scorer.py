@@ -3,7 +3,6 @@ Joint DistilBERT + structured features scorer.
 Matches Filipe's model architecture from joint_fine_tuning.ipynb.
 """
 import os
-import pickle
 from typing import Optional
 
 import numpy as np
@@ -13,6 +12,7 @@ import torch.nn as nn
 from transformers import AutoTokenizer, AutoModel
 from sklearn.preprocessing import StandardScaler
 from safetensors.torch import load_file
+from huggingface_hub import hf_hub_download
 
 
 class DistilBERTWithStructuredFeatures(nn.Module):
@@ -53,11 +53,11 @@ class DistilBERTWithStructuredFeatures(nn.Module):
 class BertScorer:
     """Wraps the joint BERT model for easy inference."""
 
-    def __init__(self, checkpoint_dir: str, train_csv_path: str,
+    def __init__(self, hf_repo_id: str, train_csv_path: str,
                  features_scale: list, features_no_scale: list,
                  text_model_name: str = "distilbert-base-uncased",
                  max_length: int = 128, device: Optional[str] = None):
-        self.checkpoint_dir = checkpoint_dir
+        self.hf_repo_id = hf_repo_id
         self.features_scale = features_scale
         self.features_no_scale = features_no_scale
         self.max_length = max_length
@@ -77,13 +77,10 @@ class BertScorer:
             structured_dim=structured_dim,
         )
 
-        # Load weights
-        weights_path = os.path.join(checkpoint_dir, "model.safetensors")
-        if os.path.isfile(weights_path):
-            state = load_file(weights_path)
-        else:
-            bin_path = os.path.join(checkpoint_dir, "pytorch_model.bin")
-            state = torch.load(bin_path, map_location="cpu", weights_only=True)
+        # Download weights from HuggingFace Hub (cached after first download)
+        print(f"Downloading model weights from HuggingFace: {hf_repo_id}")
+        weights_path = hf_hub_download(repo_id=hf_repo_id, filename="model.safetensors")
+        state = load_file(weights_path)
 
         self.model.load_state_dict(state, strict=True)
         self.model.to(self.device)
